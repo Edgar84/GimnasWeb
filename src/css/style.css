@@ -11,8 +11,12 @@
 .text-size-sm{font-size: 12px;}
 .text-size-xs{font-size: 8px;}
 
-.navbar .logo, footer .logo {
+.navbar .logo {
     width: 120px;
+}
+
+footer .logo {
+    width: 70px;
 }
 
 .login-main {
@@ -69,7 +73,7 @@
     text-transform: uppercase;
     text-indent: 40px;
     font-style: italic;
-    background: url(/src/img/logoX.png) no-repeat left center;
+    background: url(../img/logoX.png) no-repeat left center;
     background-size: 70px;
 }
 
@@ -79,6 +83,22 @@
 
 .card {
     margin-bottom: 25px;
+}
+
+.card figure {
+    position: relative;
+    margin-bottom: 0;
+}
+
+span.color-x {
+    width: 0;
+    height: 0;
+    border-left: 55px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 55px solid rgb(204, 44, 44);
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .card-body h2 {
@@ -105,11 +125,75 @@
     width: 100%;
 }
 
+.personal_area h2 {
+    border-bottom: 2px solid #ffae00;
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+    padding-top: 50px;
+}
+
+.personal_area .form-group {
+    align-items: end;
+}
+
+.personal_area .button-submit {
+    margin-top: 50px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.personal_area .button-submit button {
+    min-width: 250px;
+    min-width: 100%;
+}
+
 footer {
-    justify-content: space-between;
+    justify-content: center;
+}
+
+footer p {
+    text-align: center;
+    order: 2;
+}
+
+footer .logo {
+    display: none;
+}
+
+footer ul.nav {
+    justify-content: center;
 }
 
 /* Media quaries */
+@media (min-width: 768px){
+    .personal_area .button-submit div {
+        display: flex;
+        justify-content: end;
+    }
+    
+    .personal_area .button-submit button {
+        min-width: 250px;
+    }
+
+    footer {
+        justify-content: space-between;
+    }
+
+    footer p {
+        text-align: left;
+        order: 1;
+    }
+
+    footer .logo {
+        display: block;
+        order: 2;
+    }
+
+    footer ul.nav {
+        justify-content: end;
+        order: 3;
+    }
+}
 @media (min-width: 576px){
     .modal-dialog {
         max-width: 350px;
