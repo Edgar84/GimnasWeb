@@ -11,38 +11,51 @@
 .text-size-sm{font-size: 12px;}
 .text-size-xs{font-size: 8px;}
 
-.modal .modal-header {
-    border-bottom: none;
+.navbar .logo, footer .logo {
+    width: 120px;
 }
 
-.modal .modal-body {
+.login-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.login-main form {
+    width: max-content;
     text-align: center;
     padding: 2rem;
 }
 
-.modal .modal-body .modal-title {
+.login-main form .logo {
+    display: inline-block;
+    max-width: 70%;
+    margin: 0 auto 25px;
+}
+
+.login-title {
     margin: 0px auto 30px;
 }
 
-.modal .form-group {
+.login-main form .form-group {
     position: relative;
 }
 
-.modal .form-group label {
+.login-main form .form-group label {
     position: absolute;
     left: 10px;
     top: 7px;
 }
 
-.modal .form-group input {
+.login-main form .form-group input {
     text-indent: 20px;
 }
 
-.modal .form-group:nth-child(2) {
+.login-main form .form-group:nth-child(3) {
     margin-bottom: 30px;
 }
 
-.modal .form-group + button {
+.login-main form .form-group + button {
     width: 100%;
 }
 
@@ -90,6 +103,10 @@
 
 .card-body button {
     width: 100%;
+}
+
+footer {
+    justify-content: space-between;
 }
 
 /* Media quaries */
