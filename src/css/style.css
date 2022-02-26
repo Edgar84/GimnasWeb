@@ -1,0 +1,100 @@
+:root{
+
+}
+
+.h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.text-size-base{ font-size: 16px;}
+.text-size-sm{font-size: 12px;}
+.text-size-xs{font-size: 8px;}
+
+.modal .modal-header {
+    border-bottom: none;
+}
+
+.modal .modal-body {
+    text-align: center;
+    padding: 2rem;
+}
+
+.modal .modal-body .modal-title {
+    margin: 0px auto 30px;
+}
+
+.modal .form-group {
+    position: relative;
+}
+
+.modal .form-group label {
+    position: absolute;
+    left: 10px;
+    top: 7px;
+}
+
+.modal .form-group input {
+    text-indent: 20px;
+}
+
+.modal .form-group:nth-child(2) {
+    margin-bottom: 30px;
+}
+
+.modal .form-group + button {
+    width: 100%;
+}
+
+.carousel-item img {
+    min-height: 268px;
+    max-height: 600px;
+}
+
+.home-title {
+    padding: 40px 0;
+    text-transform: uppercase;
+    text-indent: 40px;
+    font-style: italic;
+    background: url(/src/img/logoX.png) no-repeat left center;
+    background-size: 70px;
+}
+
+.card-section {
+    margin-bottom: 20px;
+}
+
+.card {
+    margin-bottom: 25px;
+}
+
+.card-body h2 {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.card-body p.card-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ededed;
+}
+
+.card-body p:nth-child(5){
+    margin-bottom: 25px;
+}
+
+.card-body p.card-text span+span {
+    font-weight: 500;
+}
+
+.card-body button {
+    width: 100%;
+}
+
+/* Media quaries */
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 350px;
+    }
+}
