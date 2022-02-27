@@ -11,6 +11,10 @@
 .text-size-sm{font-size: 12px;}
 .text-size-xs{font-size: 8px;}
 
+.navbar-nav {
+    align-items: center;
+}
+
 .navbar .logo {
     width: 120px;
 }
@@ -147,8 +151,33 @@ span.color-x {
     min-width: 100%;
 }
 
+#competicions{
+    min-height: calc(100vh - 123px);
+    padding-top: 30px;
+}
+
+#competicions h1 {
+    margin-bottom: 40px;
+    border-bottom: 2px solid #ffae00;
+}
+
+.xml-logo {
+    background: url(../img/logo-v4.png) no-repeat left center;
+}
+
+.xml-logo_header {
+    height: 66px;
+    background-size: 120px;
+}
+
+.xml-logo_footer {
+    height: 39px;
+    background-size: 70px;
+}
+
 footer {
     justify-content: center;
+    align-items: center;
 }
 
 footer p {
