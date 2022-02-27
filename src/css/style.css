@@ -161,6 +161,11 @@ span.color-x {
     border-bottom: 2px solid #ffae00;
 }
 
+#competicions .card-body p.card-text:nth-last-child(2) {
+    border-bottom: none;
+    text-align: justify;
+}
+
 .xml-logo {
     background: url(../img/logo-v4.png) no-repeat left center;
 }

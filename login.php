@@ -27,7 +27,7 @@
             <button type="submit" class="btn btn-success">Entrar</button>
         </form>
     </main>
-
+    <script src="src/js/functions.js"></script>
     <script src="src/js/bootstrap-4.6.1/jquery3_6_0.slim.min.js"></script>
     <script src="src/js/bootstrap-4.6.1/bootstrap.min.js"></script>
 </body>
