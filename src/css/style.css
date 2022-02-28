@@ -117,7 +117,7 @@ span.color-x {
     border-bottom: 1px solid #ededed;
 }
 
-.card-body p:nth-child(5){
+.card-body p:nth-last-child(2){
     margin-bottom: 25px;
 }
 
@@ -129,11 +129,26 @@ span.color-x {
     width: 100%;
 }
 
-.personal_area h2 {
+#areaPersonal h1 {
+    padding-top: 30px;
     border-bottom: 2px solid #ffae00;
+}
+
+#areaPersonal .reserves {
+    padding: 25px 0 50px;
+    display: flex;
+    justify-content: end;
+}
+
+#areaPersonal .reserves .btn {
+    width: 100%;
+}
+
+.personal_area h2 {
+    border-bottom: 1px solid #d5d5d5;
     font-size: 1.8rem;
     margin-bottom: 40px;
-    padding-top: 50px;
+    padding-top: 30px;
 }
 
 .personal_area .form-group {
@@ -151,12 +166,12 @@ span.color-x {
     min-width: 100%;
 }
 
-#competicions{
+#competicions, #reserves{
     min-height: calc(100vh - 123px);
     padding-top: 30px;
 }
 
-#competicions h1 {
+#competicions h1, #reserves h1 {
     margin-bottom: 40px;
     border-bottom: 2px solid #ffae00;
 }
@@ -200,6 +215,11 @@ footer ul.nav {
 
 /* Media quaries */
 @media (min-width: 768px){
+    .carousel-item img {
+        min-height: 600px;
+        max-height: 600px;
+    }
+
     .personal_area .button-submit div {
         display: flex;
         justify-content: end;
@@ -207,6 +227,10 @@ footer ul.nav {
     
     .personal_area .button-submit button {
         min-width: 250px;
+    }
+
+    #areaPersonal .reserves .btn {
+        width: 250px;
     }
 
     footer {

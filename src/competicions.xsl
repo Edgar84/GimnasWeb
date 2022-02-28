@@ -69,7 +69,7 @@
                                     <p class="card-text"><span class="text-muted text-size-sm">Descripció:</span></p>
                                     <p class="card-text"><xsl:value-of select="description"></xsl:value-of></p>
                                     <button class="btn btn-primary" type="button">
-                                        Reservar
+                                        Apuntar-se
                                     </button>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
         </div>
         <div class="container">
             <footer class="d-flex flex-wrap border-top">
-                <p class="col-md-4 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
+                <p class="col-md-5 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
                 <a class="logo xml-logo xml-logo_footer" href="index.html">
                     <!-- <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal"> -->
                 </a>
