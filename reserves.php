@@ -1,3 +1,7 @@
+<?php
+    include 'php.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,14 +36,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="competicions.xml">Competicions</a>
                         </li>
+                        <?php if (empty($_SESSION['usuari'])) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php">Entrar</a>
                         </li>
+                        <?php } else {?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="fitxa.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo ' ' .$_SESSION['nom'] . ' ' . $_SESSION['cognom'] ?></a>
+                        </li>
+                        <?php }?>
+                        
+                        <?php if (!empty($_SESSION['usuari'])) {?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tancar.php">
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
-                        </li>            
+                        </li>  
+                        <?php }?>        
                     </ul>
                 </div>
             </nav>

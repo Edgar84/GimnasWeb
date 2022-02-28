@@ -1,9 +1,14 @@
+<?php
+    include 'php.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="src/img/logoX_transparent.png" type="image/icon type">
     <title>Top Gym</title>
     <link rel="stylesheet" href="src/css/reset.css"/>
     <link rel="stylesheet" href="src/css/bootstrap-4.6.1/bootstrap.min.css"/>
@@ -32,14 +37,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="competicions.xml">Competicions</a>
                         </li>
+                        <?php if (empty($_SESSION['usuari'])) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php">Entrar</a>
                         </li>
+                        <?php } else {?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="fitxa.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo ' ' .$_SESSION['nom'] . ' ' . $_SESSION['cognom'] ?></a>
+                        </li>
+                        <?php }?>
+                        
+                        <?php if (!empty($_SESSION['usuari'])) {?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tancar.php">
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
-                        </li>            
+                        </li>  
+                        <?php }?>          
                     </ul>
                 </div>
             </nav>
@@ -81,6 +95,7 @@
                 <h2>Activitats lliures</h2>
             </div>
             <section class="row card-section">
+            <?php $result = infoActivitatsLliures(); while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
@@ -88,149 +103,44 @@
                             <span class="color-x"></span>
                         </figure>
                         <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
+                            <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
                             <button class="btn btn-primary" type="button">
                                 Reservar
                             </button>
                         </div>
                       </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
+            <?php }?>
             </section>
             <!-- Activitats col·lectives -->
             <div class="home-title">
                 <h2>Activitats col·lectives</h2>
             </div>
             <section class="row card-section">
+            <?php $result = infoActivitatsColectives(); while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
-                        <figure>
+                    <figure>
                             <img src="src/img/x.png" class="card-img-top " alt="...">
                             <span class="color-x"></span>
                         </figure>
                         <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
+                            <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
                             <button class="btn btn-primary" type="button">
                                 Reservar
                             </button>
                         </div>
                       </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
+            <?php }?>
             </section>
         </div>
     </main>

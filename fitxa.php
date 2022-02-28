@@ -1,3 +1,11 @@
+<?php
+    include 'php.php';
+    session_start();
+    $success = '';
+    modificarDadesClient();
+    obtenirDadesUsuari();
+    
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -32,14 +40,23 @@
                         <li class="nav-item">
                             <a class="nav-link" href="competicions.xml">Competicions</a>
                         </li>
+                        <?php if (empty($_SESSION['usuari'])) {?>
                         <li class="nav-item">
                             <a class="nav-link" href="login.php">Entrar</a>
                         </li>
+                        <?php } else {?>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="fitxa.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo ' ' . $_SESSION['nom'] . ' ' . $_SESSION['cognom'] ?></a>
+                        </li>
+                        <?php }?>
+                        
+                        <?php if (!empty($_SESSION['usuari'])) {?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="tancar.php">
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
-                        </li>            
+                        </li>  
+                        <?php }?>           
                     </ul>
                 </div>
             </nav>
@@ -59,14 +76,19 @@
                     </div>
                 </div>
             </div>
-            <form action="" class="personal_area">
+            <form method="POST" class="personal_area">
+
                 <h2>Dades personals</h2>
+                <?php if (isset($_POST['submit'])) {?>
+                    <p class="login-error"><?php echo $_SESSION['error']; $_SESSION['error'] = '';?> </p>
+                    <p class="success"><?php echo $_SESSION['success']; $_SESSION['success'] = '';?> </p>
+                <?php }?>
                 <div class="row form-group">
                     <div class="col-12 col-md-4">
                         <label for="nom">Nom</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="text" class="form-control" id="nom" name="nom" value="Pedrito" disabled>
+                        <input type="text" class="form-control" id="nom" name="nom" value="<?php echo $_SESSION['nom']?>" disabled>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -74,7 +96,7 @@
                         <label for="cognom">Cognom</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="text" class="form-control" id="cognom" name="cognom" value="Sanchez" disabled>
+                        <input type="text" class="form-control" id="cognom" name="cognom" value="<?php echo $_SESSION['cognom']?>" disabled>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -82,15 +104,15 @@
                         <label for="dni">DNI</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="text" class="form-control" id="dni" name="dni" value="71176815A" disabled>
+                        <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $_SESSION['dni']?>" disabled>
                     </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-12 col-md-4">
-                        <label for="dataneixament">Data neixement</label>
+                        <label for="dataneixament">Data naixement</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="date" class="form-control" id="dataneixament" name="dataneixament" value="2006-06-15" disabled>
+                        <input type="date" class="form-control" id="dataneixament" name="dataneixament" value="<?php echo $_SESSION['data_naix']?>" disabled>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -98,7 +120,7 @@
                         <label for="sexe">Sexe</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="text" class="form-control" id="sexe" name="sexe" value="Home" disabled>
+                        <input type="text" class="form-control" id="sexe" name="sexe" value="<?php echo $_SESSION['sexe']?>" disabled>
                     </div>
                 </div>
 
@@ -108,7 +130,7 @@
                         <label for="tel">Telèfon</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="tel" class="form-control" id="tel" name="tel" value="649568225" pattern="[0-9]{9}">
+                        <input type="tel" class="form-control" id="tel" name="tel" value="<?php echo $_SESSION['telefon']?>" pattern="[0-9]{9}">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -116,7 +138,7 @@
                         <label for="email">Email</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="email" class="form-control" id="email" name="email" value="pedrito.s@gmail.com" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                        <input type="email" class="form-control" id="email" name="email" value="<?php echo $_SESSION['email']?>" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                     </div>
                 </div>
 
@@ -126,7 +148,7 @@
                         <label for="user">Usuari</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="text" class="form-control" id="user" name="user" value="Pedrito Cop">
+                        <input type="text" class="form-control" id="user" name="user" value="<?php echo $_SESSION['usuari']?>">
                     </div>
                 </div>
                 <div class="row form-group">
@@ -152,7 +174,7 @@
                         <label for="iban">Compte bancari</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="text" class="form-control" id="iban" name="iban" value="ES5236985222699889200468" disabled>
+                        <input type="text" class="form-control" id="iban" name="iban" value="<?php echo $_SESSION['compte_bancari']?>" disabled>
                     </div>
                 </div>
 
@@ -162,7 +184,7 @@
                         <label for="dataalta">Data d'alta</label>
                     </div>
                     <div class="col-12 col-md-4">
-                        <input type="date" class="form-control" id="dataalta" name="dataalta" value="2022-02-15" disabled>
+                        <input type="date" class="form-control" id="dataalta" name="dataalta" value="<?php echo $_SESSION['data_alta']?>" disabled>
                     </div>
                 </div>
                 <div class="row form-group">
@@ -171,14 +193,20 @@
                     </div>
                     <div class="col-12 col-md-4">
                         <select type="checkbox" class="form-control" id="info" name="info">
+
+                        <?php if ($_SESSION['com_comercial'] == 0) {?>
+                            <option value="1">No</option>
+                            <option value="0">Si</option>
+                            <?php } else {?>
                             <option value="0">Si</option>
                             <option value="1">No</option>
+                            <?php }?>
                         </select>
                     </div>
                 </div>
                 <div class="row form-group button-submit">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="submit" name="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </div>
             </form>
