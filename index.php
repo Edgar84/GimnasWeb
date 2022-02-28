@@ -3,7 +3,7 @@
     session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -145,19 +145,18 @@
         </div>
     </main>
     <div class="container">
-    <footer class="d-flex flex-wrap border-top">
-            <p class="col-md-4 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
-            <a class="logo" href="index.html">
+        <footer class="d-flex flex-wrap border-top">
+            <p class="col-md-5 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
+            <a class="logo" href="index.php">
                 <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
             </a>
             <ul class="nav col-md-5">
-                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Activitats</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#activitats" class="nav-link px-2 text-muted">Activitats</a></li>
                 <li class="nav-item"><a href="competicions.xml" class="nav-link px-2 text-muted">Competicions</a></li>
             </ul>
         </footer>
-      </div>
-
+    </div>
     <script src="src/js/functions.js"></script>
     <script src="src/js/bootstrap-4.6.1/jquery3_6_0.slim.min.js"></script>
     <script src="src/js/bootstrap-4.6.1/bootstrap.min.js"></script>
