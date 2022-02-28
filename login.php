@@ -13,7 +13,7 @@
 <body>
     <main class="login-main">
         <form method="POST">
-            <a class="logo" href="index.html">
+            <a class="logo" href="index.php">
                 <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
             </a>
             <div class="form-group">

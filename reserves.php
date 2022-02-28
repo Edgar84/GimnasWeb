@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitxa - Top Gim</title>
+    <title>Reserves - Top Gym</title>
     <link rel="stylesheet" href="src/css/reset.css"/>
     <link rel="stylesheet" href="src/css/bootstrap-4.6.1/bootstrap.min.css"/>
     <link rel="stylesheet" href="src/css/fontawesome/all.min.css"/>
@@ -15,7 +15,7 @@
         <div class="container">
             <nav class="navbar navbar-light navbar-expand-sm">
                 <!-- logo -->
-                <a class="logo" href="index.html">
+                <a class="logo" href="index.php">
                     <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
                 </a>
                 <!-- burguer button -->
@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse justify-content-sm-end" id="burguerMenu">   
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html#activitats">Activitats</a>
+                            <a class="nav-link" href="index.php#activitats">Activitats</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="competicions.xml">Competicions</a>
@@ -147,13 +147,13 @@
     <div class="container">
         <footer class="d-flex flex-wrap border-top">
             <p class="col-md-5 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
-            <a class="logo" href="index.html">
+            <a class="logo" href="index.php">
                 <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
             </a>
             <ul class="nav col-md-5">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Activitats</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Competicions</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="index.php#activitats" class="nav-link px-2 text-muted">Activitats</a></li>
+                <li class="nav-item"><a href="competicions.xml" class="nav-link px-2 text-muted">Competicions</a></li>
             </ul>
         </footer>
     </div>
