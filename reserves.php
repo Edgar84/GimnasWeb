@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Gim</title>
+    <title>Fitxa - Top Gim</title>
     <link rel="stylesheet" href="src/css/reset.css"/>
     <link rel="stylesheet" href="src/css/bootstrap-4.6.1/bootstrap.min.css"/>
     <link rel="stylesheet" href="src/css/fontawesome/all.min.css"/>
@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse justify-content-sm-end" id="burguerMenu">   
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#activitats">Activitats</a>
+                            <a class="nav-link" href="index.html#activitats">Activitats</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="competicions.xml">Competicions</a>
@@ -45,42 +45,64 @@
             </nav>
         </div>
     </header>
-    <main>
-        <!-- Slider -->
-        <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block w-100" src="src/img/slider-1.jpg" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="src/img/slider-2.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="src/img/slider-3.jpg" alt="Third slide">
+    <main id="reserves">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Reserves</h1>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-
-        <!-- Content -->
-        <div class="container" id="activitats">
-            <!-- Activitats lliures -->
-            <div class="home-title">
-                <h2>Activitats lliures</h2>
+            <div class="row">
+                <div class="col-12">
+                    <div class="home-title">
+                        <h2>Reserves pendents</h2>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card" >
+                        <figure>
+                            <img src="src/img/x.png" class="card-img-top " alt="...">
+                            <span class="color-x"></span>
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="h4">Natació</h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Col·lectiva</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
+                            <button class="btn btn-primary" type="button">
+                                Reservar
+                            </button>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="card" >
+                        <figure>
+                            <img src="src/img/x.png" class="card-img-top " alt="...">
+                            <span class="color-x"></span>
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="h4">Natació</h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Lliure</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
+                            <button class="btn btn-primary" type="button">
+                                Reservar
+                            </button>
+                        </div>
+                      </div>
+                </div>
             </div>
-            <section class="row card-section">
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="home-title">
+                        <h2>Reserves finalitzades</h2>
+                    </div>
+                </div>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
@@ -90,6 +112,7 @@
                         <div class="card-body">
                             <h2 class="h4">Natació</h2>
                             <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Col·lectiva</span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
@@ -108,6 +131,7 @@
                         <div class="card-body">
                             <h2 class="h4">Natació</h2>
                             <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Col·lectiva</span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
@@ -117,121 +141,7 @@
                         </div>
                       </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-            </section>
-            <!-- Activitats col·lectives -->
-            <div class="home-title">
-                <h2>Activitats col·lectives</h2>
             </div>
-            <section class="row card-section">
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-3">
-                    <div class="card" >
-                        <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
-                        </figure>
-                        <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
-                        </div>
-                      </div>
-                </div>
-            </section>
         </div>
     </main>
     <div class="container">
@@ -241,9 +151,9 @@
                 <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
             </a>
             <ul class="nav col-md-5">
-                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Activitats</a></li>
-                <li class="nav-item"><a href="competicions.xml" class="nav-link px-2 text-muted">Competicions</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Competicions</a></li>
             </ul>
         </footer>
     </div>

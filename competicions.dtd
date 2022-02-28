@@ -1,0 +1,6 @@
+<!ELEMENT competicions (competicio+)>
+<!ELEMENT competicio (name,date,image,description)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT image (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
