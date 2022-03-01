@@ -2,17 +2,15 @@
     include 'php.php';
     session_start();
     $success = '';
-    modificarDadesClient();
-    obtenirDadesUsuari();
-    
+    modificarDadesClient();    
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitxa - Top Gim</title>
+    <title>Fitxa - Top Gym</title>
     <link rel="stylesheet" href="src/css/reset.css"/>
     <link rel="stylesheet" href="src/css/bootstrap-4.6.1/bootstrap.min.css"/>
     <link rel="stylesheet" href="src/css/fontawesome/all.min.css"/>
@@ -206,7 +204,7 @@
                 </div>
                 <div class="row form-group button-submit">
                     <div class="col-12">
-                        <input type="submit" name="submit" class="btn btn-success" value="Guardar">
+                        <button type="submit" name="submit" class="btn btn-success">Guardar</button>
                     </div>
                 </div>
             </form>
@@ -214,18 +212,18 @@
     </main>
     <div class="container">
         <footer class="d-flex flex-wrap border-top">
-            <p class="col-md-4 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
-            <a class="logo" href="index.html">
+            <p class="col-md-5 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
+            <a class="logo" href="index.php">
                 <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
             </a>
             <ul class="nav col-md-5">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Activitats</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Competicions</a></li>
+                <li class="nav-item"><a href="index.php" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="index.php#activitats" class="nav-link px-2 text-muted">Activitats</a></li>
+                <li class="nav-item"><a href="competicions.xml" class="nav-link px-2 text-muted">Competicions</a></li>
             </ul>
         </footer>
     </div>
-
+    <script src="src/js/functions.js"></script>
     <script src="src/js/bootstrap-4.6.1/jquery3_6_0.slim.min.js"></script>
     <script src="src/js/bootstrap-4.6.1/bootstrap.min.js"></script>
 </body>

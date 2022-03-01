@@ -1,67 +1,41 @@
 <?php
-    function con() {
-        $con = new mysqli('localhost', 'root', 'root', 'gimnas');
-
-        if ($con->connect_errno) {
-            die("Ha hagut un problema de connexio");
-        }
-        return $con;
-    }
+    require 'connexio.php';
 
     function iniciarSessio() {
         if (isset($_POST['submit'])) {
             $user = $_POST['usuari'];
-            $passwd = $_POST['password'];
+            $passwd = ($_POST['password']);
             $correcte = '';
 
-            $sql = "SELECT * FROM client WHERE usuari = '" . $_POST['usuari'] . "' AND contrasenya = '" . md5($_POST['password']) . "'";
+            $sql = "SELECT * FROM client WHERE usuari = '" . $_POST['usuari'] ."' AND contrasenya = '" . md5($_POST['password']) . "'";
             $result = con()->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    if ($user == $row['usuari']) {
-                        if (md5($passwd) == $row['contrasenya']) {
-                            $correcte = 'Correcte'; 
-                        }   
-                    }
-                    if ($correcte == 'Correcte') {
+                        $_SESSION['dni'] = $row['dni'];
                         $_SESSION['nom'] = $row['nom'];
                         $_SESSION['cognom'] = $row['cognom'];
+                        $_SESSION['telefon'] = $row['telefon'];
+                        $_SESSION['email'] = $row['email'];
+                        $_SESSION['sexe'] = $row['sexe'];
+                        $_SESSION['data_naix'] = $row['data_neixement'];
                         $_SESSION['usuari'] = $row['usuari'];
+                        $_SESSION['compte_bancari'] = $row['compte_bancari'];
+                        $_SESSION['condicio'] = $row['condicio'];
+                        $_SESSION['com_comercial'] = $row['comunicacio_comercial'];
+                        $_SESSION['data_alta'] = $row['data_alta'];
                         header("Location: index.php");
-                    }
                 }
             }
             else {
                 $_SESSION['error'] = "Usuari o contrasenya incorrectes";
+                    
             }     
         }
     }
 
-    function obtenirDadesUsuari() {
-        if (isset($_SESSION['usuari'])) {
-        $sql = "SELECT * FROM client a, es_dona b WHERE a.usuari = '" . $_SESSION['usuari'] . "'AND a.dni = b.dni AND b.data_baixa IS null";
-        $result = con()->query($sql);
-        
-        while ($row = $result->fetch_assoc()) {
-            $_SESSION['dni'] = $row['dni'];
-            $_SESSION['nom'] = $row['nom'];
-            $_SESSION['cognom'] = $row['cognom'];
-            $_SESSION['telefon'] = $row['telefon'];
-            $_SESSION['email'] = $row['email'];
-            $_SESSION['sexe'] = $row['sexe'];
-            $_SESSION['data_naix'] = $row['data_neixement'];
-            $_SESSION['usuari'] = $row['usuari'];
-            $_SESSION['compte_bancari'] = $row['compte_bancari'];
-            $_SESSION['condicio'] = $row['condicio'];
-            $_SESSION['com_comercial'] = $row['comunicacio_comercial'];
-            $_SESSION['data_alta'] = $row['data_alta'];
-        }
-        }
-    }
-
     function infoActivitatsLliures() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT a.id, a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, b.data, c.num, c.aforament_max, d.nom, d.cognom, a.color
                 FROM activitat a, es_fa b, sala c, monitor d
                 WHERE a.id = b.id AND
                 b.num = c.num AND
@@ -74,7 +48,7 @@
     }
 
     function infoActivitatsColectives() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT a.id, a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, b.data, c.num, c.aforament_max, d.nom, d.cognom, a.color
                 FROM activitat a, es_fa b, sala c, monitor d
                 WHERE a.id = b.id AND
                 b.num = c.num AND
@@ -93,7 +67,7 @@
                 $sql = "UPDATE client SET telefon = '" . $_POST['tel'] . "',
                 email = '" . $_POST['email'] . "',
                 usuari = '" . $_POST['user'] . "',
-                contrasenya = '" . $_POST['password'] . "',
+                contrasenya = '" . sha1($_POST['password']) . "',
                 comunicacio_comercial = '" . $_POST['info'] . "' 
                 WHERE dni = '" . $_SESSION['dni'] . "'";
                 $result = con()->query($sql);
