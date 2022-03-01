@@ -134,7 +134,7 @@
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn btn-primary btn-reserva" type="button">
                                 Reservar
                             </button>
                         </div>

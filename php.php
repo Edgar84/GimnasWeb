@@ -1,6 +1,7 @@
 <?php
     function con() {
-        $con = new mysqli('localhost', 'root', 'root', 'gimnas');
+        //$con = new mysqli('localhost', 'root', 'root', 'gimnas');
+        $con = new mysqli('localhost', 'root', 'root', 'db_gimnas', '3307');
 
         if ($con->connect_errno) {
             die("Ha hagut un problema de connexio");
@@ -63,7 +64,7 @@
 
 
     function infoActivitatsLliures() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
                 FROM activitat a, es_fa b, sala c, monitor d
                 WHERE a.id = b.id AND
                 b.num = c.num AND
@@ -76,7 +77,7 @@
     }
 
     function infoActivitatsColectives() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
                 FROM activitat a, es_fa b, sala c, monitor d
                 WHERE a.id = b.id AND
                 b.num = c.num AND
