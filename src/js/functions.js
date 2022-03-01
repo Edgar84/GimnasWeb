@@ -1,13 +1,16 @@
-if(document.querySelectorAll('.btn-reserva')){
+//if(document.querySelectorAll('.btn-reserva')){
     const buttonsReserva = document.querySelectorAll('.btn-reserva');
     buttonsReserva.forEach(btn => {
         btn.addEventListener('click', function(){
+            const id = btn.closest('#idActivitat');
+            console.log("ID: " + id);
             reservar();
         });
     });
-}
+//}
 
 function reservar() {
+    const id = "";
     const xhttp = new XMLHttpRequest();
     xhttp.open('GET','reserva.php',true);
     xhttp.send();

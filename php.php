@@ -56,7 +56,7 @@
 
 
     function infoActivitatsLliures() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT a.id, a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, b.data, c.num, c.aforament_max, d.nom, d.cognom, a.color
                 FROM activitat a, es_fa b, sala c, monitor d
                 WHERE a.id = b.id AND
                 b.num = c.num AND
@@ -69,7 +69,7 @@
     }
 
     function infoActivitatsColectives() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT a.id, a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, b.data, c.num, c.aforament_max, d.nom, d.cognom, a.color
                 FROM activitat a, es_fa b, sala c, monitor d
                 WHERE a.id = b.id AND
                 b.num = c.num AND
@@ -107,10 +107,6 @@
                 $_SESSION['error'] = "Les contrasenyes introduïdes han de ser iguals";
             }
         }
-    }
-
-    function reservar() {
-        echo "hola";
     }
 
 ?>

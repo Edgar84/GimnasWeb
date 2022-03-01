@@ -104,6 +104,8 @@
                         </figure>
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text d-none"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="idActivitat"><?php echo $row['id']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span><?php echo $row['data']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
@@ -130,6 +132,8 @@
                         </figure>
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text d-none"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="idActivitat"><?php echo $row['id']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span><?php echo $row['data']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
