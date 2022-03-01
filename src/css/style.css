@@ -94,16 +94,20 @@ footer .logo {
     margin-bottom: 0;
 }
 
-span.color-x {
+span.color {
     width: 0;
     height: 0;
     border-left: 55px solid transparent;
     border-right: 0px solid transparent;
-    border-top: 55px solid rgb(204, 44, 44);
     position: absolute;
     top: 0;
     right: 0;
 }
+
+.color-vermell {border-top: 55px solid rgb(204, 44, 44);}
+.color-blau {border-top: 55px solid rgb(60, 98, 223);}
+.color-taronja {border-top: 55px solid rgb(214, 115, 49);}
+.color-verd {border-top: 55px solid rgb(75, 177, 49);}
 
 .card-body h2 {
     text-align: center;

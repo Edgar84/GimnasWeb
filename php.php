@@ -1,18 +1,10 @@
 <?php
-    function con() {
-        //$con = new mysqli('localhost', 'root', 'root', 'gimnas');
-        $con = new mysqli('localhost', 'root', 'root', 'db_gimnas', '3307');
-
-        if ($con->connect_errno) {
-            die("Ha hagut un problema de connexio");
-        }
-        return $con;
-    }
+    require 'connexio.php';
 
     function iniciarSessio() {
         if (isset($_POST['submit'])) {
             $user = $_POST['usuari'];
-            $passwd = $_POST['password'];
+            $passwd = sha1($_POST['password']);
             $correcte = '';
 
             $sql = "SELECT * FROM client WHERE usuari = '" . $_POST['usuari'] ."' AND contrasenya = '" . $_POST['password'] . "'";
@@ -96,7 +88,7 @@
                 $sql = "UPDATE client SET telefon = '" . $_POST['tel'] . "',
                 email = '" . $_POST['email'] . "',
                 usuari = '" . $_POST['user'] . "',
-                contrasenya = '" . $_POST['password'] . "',
+                contrasenya = '" . sha1($_POST['password']) . "',
                 comunicacio_comercial = '" . $_POST['info'] . "' 
                 WHERE dni = '" . $_SESSION['dni'] . "'";
                 $result = con()->query($sql);
@@ -115,6 +107,10 @@
                 $_SESSION['error'] = "Les contrasenyes introduïdes han de ser iguals";
             }
         }
+    }
+
+    function reservar() {
+        echo "hola";
     }
 
 ?>
