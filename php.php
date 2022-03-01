@@ -4,7 +4,7 @@
     function iniciarSessio() {
         if (isset($_POST['submit'])) {
             $user = $_POST['usuari'];
-            $passwd = ($_POST['password']);
+            $passwd = $_POST['password'];
             $correcte = '';
 
             $sql = "SELECT * FROM client WHERE usuari = '" . $_POST['usuari'] ."' AND contrasenya = '" . md5($_POST['password']) . "'";
@@ -67,7 +67,7 @@
                 $sql = "UPDATE client SET telefon = '" . $_POST['tel'] . "',
                 email = '" . $_POST['email'] . "',
                 usuari = '" . $_POST['user'] . "',
-                contrasenya = '" . sha1($_POST['password']) . "',
+                contrasenya = '" . $_POST['password'] . "',
                 comunicacio_comercial = '" . $_POST['info'] . "' 
                 WHERE dni = '" . $_SESSION['dni'] . "'";
                 $result = con()->query($sql);
