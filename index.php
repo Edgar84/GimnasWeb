@@ -3,7 +3,7 @@
     session_start();
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -95,12 +95,13 @@
                 <h2>Activitats lliures</h2>
             </div>
             <section class="row card-section">
-            <?php $result = infoActivitatsLliures(); while ($row = $result->fetch_assoc()) { ?>
+            <?php $result = infoActivitatsLliures(); 
+            while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
                             <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                            <span class=<?php echo $row['color']?>></span>
                         </figure>
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
@@ -126,7 +127,7 @@
                     <div class="card" >
                     <figure>
                             <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                            <span class=<?php echo $row['color']?>></span>
                         </figure>
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
@@ -134,7 +135,7 @@
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <button class="btn btn-primary btn-reserva" type="button">
+                            <button class="btn btn-primary" type="button">
                                 Reservar
                             </button>
                         </div>
@@ -145,18 +146,19 @@
         </div>
     </main>
     <div class="container">
-        <footer class="d-flex flex-wrap border-top">
-            <p class="col-md-5 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
-            <a class="logo" href="index.php">
+    <footer class="d-flex flex-wrap border-top">
+            <p class="col-md-4 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
+            <a class="logo" href="index.html">
                 <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
             </a>
             <ul class="nav col-md-5">
-                <li class="nav-item"><a href="index.php" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="#activitats" class="nav-link px-2 text-muted">Activitats</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Activitats</a></li>
                 <li class="nav-item"><a href="competicions.xml" class="nav-link px-2 text-muted">Competicions</a></li>
             </ul>
         </footer>
-    </div>
+      </div>
+
     <script src="src/js/functions.js"></script>
     <script src="src/js/bootstrap-4.6.1/jquery3_6_0.slim.min.js"></script>
     <script src="src/js/bootstrap-4.6.1/bootstrap.min.js"></script>

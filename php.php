@@ -1,7 +1,6 @@
 <?php
     function con() {
-        //$con = new mysqli('localhost', 'root', 'root', 'gimnas');
-        $con = new mysqli('localhost', 'root', 'root', 'db_gimnas', '3307');
+        $con = new mysqli('localhost', 'root', 'root', 'gimnas');
 
         if ($con->connect_errno) {
             die("Ha hagut un problema de connexio");
@@ -15,13 +14,13 @@
             $passwd = $_POST['password'];
             $correcte = '';
 
-            $sql = "SELECT * FROM client WHERE usuari = '" . $_POST['usuari'] ."' AND contrasenya = '" . $_POST['password'] . "'";
+            $sql = "SELECT * FROM client WHERE usuari = '" . $_POST['usuari'] . "' AND contrasenya = '" . md5($_POST['password']) . "'";
             $result = con()->query($sql);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     if ($user == $row['usuari']) {
-                        if ($passwd == $row['contrasenya']) {
+                        if (md5($passwd) == $row['contrasenya']) {
                             $correcte = 'Correcte'; 
                         }   
                     }
@@ -35,7 +34,6 @@
             }
             else {
                 $_SESSION['error'] = "Usuari o contrasenya incorrectes";
-                    
             }     
         }
     }
@@ -61,7 +59,6 @@
         }
         }
     }
-
 
     function infoActivitatsLliures() {
         $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
@@ -115,6 +112,74 @@
                 $_SESSION['error'] = "Les contrasenyes introduïdes han de ser iguals";
             }
         }
+    }
+
+    function obtenirReservesLliuresPendents() {
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+                FROM activitat a, es_fa b, sala c, monitor d, reserva_lliure e, `client` f
+                WHERE a.id = e.id AND
+                a.id = b.id AND
+                b.num = c.num AND
+                d.num = c.num AND
+                b.data > curdate() AND
+                e.anulada = 0 AND
+                e.dni = '" . $_SESSION['dni'] . "' AND
+                a.id IN
+                    (SELECT *
+                    FROM activitat_lliure)";
+        $result = con()->query($sql);
+        return $result;
+    }
+
+    function obtenirReservesColectivesPendents() {
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+                FROM activitat a, es_fa b, sala c, monitor d, reserva_colectiva e, `client` f
+                WHERE a.id = e.id AND
+                a.id = b.id AND
+                b.num = c.num AND
+                d.num = c.num AND
+                b.data > curdate() AND
+                e.anulada = 0 AND
+                e.dni = '" . $_SESSION['dni'] . "' AND
+                a.id IN
+                    (SELECT *
+                    FROM activitat_colectiva)";
+        $result = con()->query($sql);
+        return $result;
+    }
+
+    function obtenirReservesLliuresFinalitzades() {
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+                FROM activitat a, es_fa b, sala c, monitor d, reserva_lliure e, `client` f
+                WHERE a.id = e.id AND
+                a.id = b.id AND
+                b.num = c.num AND
+                d.num = c.num AND
+                b.data < curdate() AND
+                e.anulada = 0 AND
+                e.dni = '" . $_SESSION['dni'] . "' AND
+                a.id IN
+                    (SELECT *
+                    FROM activitat_lliure)";
+        $result = con()->query($sql);
+        return $result;
+    }
+
+    function obtenirReservesColectivesFinalitzades() {
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+                FROM activitat a, es_fa b, sala c, monitor d, reserva_colectiva e, `client` f
+                WHERE a.id = e.id AND
+                a.id = b.id AND
+                b.num = c.num AND
+                d.num = c.num AND
+                b.data < curdate() AND
+                e.anulada = 0 AND
+                e.dni = '" . $_SESSION['dni'] . "' AND
+                a.id IN
+                    (SELECT *
+                    FROM activitat_colectiva)";
+        $result = con()->query($sql);
+        return $result;
     }
 
 ?>

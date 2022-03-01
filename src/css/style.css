@@ -94,12 +94,45 @@ footer .logo {
     margin-bottom: 0;
 }
 
-span.color-x {
+span.vermell {
     width: 0;
     height: 0;
     border-left: 55px solid transparent;
     border-right: 0px solid transparent;
     border-top: 55px solid rgb(204, 44, 44);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+span.blau {
+    width: 0;
+    height: 0;
+    border-left: 55px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 55px solid rgb(44, 60, 204);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+span.taronja {
+    width: 0;
+    height: 0;
+    border-left: 55px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 55px solid rgb(209, 102, 30);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+span.verd {
+    width: 0;
+    height: 0;
+    border-left: 55px solid transparent;
+    border-right: 0px solid transparent;
+    border-top: 55px solid rgb(71, 204, 44);
     position: absolute;
     top: 0;
     right: 0;
@@ -256,4 +289,23 @@ footer ul.nav {
     .modal-dialog {
         max-width: 350px;
     }
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+.h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.login-error{
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
 }

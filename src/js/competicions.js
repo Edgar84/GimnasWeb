@@ -9,4 +9,3 @@ buttons.forEach(button => {
         console.log('reservat');
     });
 });
-    

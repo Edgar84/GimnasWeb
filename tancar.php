@@ -1,11 +1,10 @@
 <?php
-session_start();
 
-$_SESSION = array();
+    //Tanca la sessió.
+    session_start();
+    session_destroy();
 
-
-session_destroy();
-header("Location: index.php");
-
+    //Redirecciona a la pàgina de login.
+    header('Location: index.php');
 
 ?>
