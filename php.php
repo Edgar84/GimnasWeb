@@ -4,7 +4,7 @@
     function iniciarSessio() {
         if (isset($_POST['submit'])) {
             $user = $_POST['usuari'];
-            $passwd = sha1($_POST['password']);
+            $passwd = md5($_POST['password']);
             $correcte = '';
 
             $sql = "SELECT * FROM client WHERE usuari = '" . $_POST['usuari'] ."' AND contrasenya = '" . $_POST['password'] . "'";
