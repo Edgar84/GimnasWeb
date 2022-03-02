@@ -261,3 +261,17 @@ footer ul.nav {
         max-width: 350px;
     }
 }
+
+.login-error{
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+.success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+
+html {
+    scroll-behavior: smooth
+}

@@ -2,12 +2,16 @@
     const buttonsReserva = document.querySelectorAll('.btn-reserva');
     buttonsReserva.forEach(btn => {
         btn.addEventListener('click', function(){
-            const id = btn.closest('#idActivitat');
-            console.log("ID: " + id);
+            const id = btn.getAttribute('id');
+            comprovarData(btn);
             reservar();
         });
     });
 //}
+function comprovarData(btn){
+    let data = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
+    console.log(data);
+}
 
 function reservar() {
     const id = "";

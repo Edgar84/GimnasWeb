@@ -1,5 +1,6 @@
 <?php
     require 'connexio.php';
+    session_start();
 
     $sql = "SELECT c.aforament_max FROM activitat a, es_fa b, sala c WHERE a.id = b.id AND b.num = c.num AND b.data > curdate();";
     $result = con()->query($sql);

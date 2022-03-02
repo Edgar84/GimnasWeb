@@ -2,9 +2,7 @@
     include 'php.php';
     session_start();
     $success = '';
-    modificarDadesClient();
-    obtenirDadesUsuari();
-    
+    modificarDadesClient();    
 ?>
 <!DOCTYPE html>
 <html lang="es">
