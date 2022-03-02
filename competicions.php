@@ -35,10 +35,7 @@
                             <a class="nav-link" href="#activitats">Activitats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="competicions.php">Competicions</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="competicions.xml">Comp</a>
+                            <a class="nav-link" href="competicions.xml">Competicions</a>
                         </li>
                         <?php if (empty($_SESSION['usuari'])) {?>
                         <li class="nav-item">

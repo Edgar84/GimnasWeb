@@ -69,16 +69,16 @@
                                     <p class="card-text"><span class="text-muted text-size-sm">Descripció:</span></p>
                                     <p class="card-text"><xsl:value-of select="description"></xsl:value-of></p>
                                     <xsl:element name="button">
-                                    <xsl:attribute name="id">
-                                        <xsl:value-of select="button/@id"/>
-                                    </xsl:attribute>
-                                    <xsl:attribute name="class">
-                                        btn btn-primary
-                                    </xsl:attribute>
-                                    <xsl:attribute name="type">
-                                        button
-                                    </xsl:attribute>
-                                </xsl:element>
+                                        <xsl:attribute name="id">
+                                            <xsl:value-of select="button/@id"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="class">
+                                            btn btn-primary
+                                        </xsl:attribute>
+                                        <xsl:attribute name="type">
+                                            button
+                                        </xsl:attribute>
+                                    </xsl:element>
                                 </div>
                             </div>
                         </div>

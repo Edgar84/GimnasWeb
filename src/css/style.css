@@ -109,6 +109,10 @@ span.color {
 .color-taronja {border-top: 55px solid rgb(214, 115, 49);}
 .color-verd {border-top: 55px solid rgb(75, 177, 49);}
 
+.card-body {
+    position: relative;
+}
+
 .card-body h2 {
     text-align: center;
     margin-bottom: 18px;
@@ -260,6 +264,25 @@ footer ul.nav {
     .modal-dialog {
         max-width: 350px;
     }
+}
+
+
+/* Missatges */
+
+.noReservaHora {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c3373eeb;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .login-error{
