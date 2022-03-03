@@ -5,7 +5,13 @@ buttonsReserva.forEach(btn => {
     btn.addEventListener('click', function(){
         const id = btn.getAttribute('id');
         if(comprovarData(btn)){
-            reservar();
+            const tipo = btn.parentElement.parentElement.parentElement.parentElement.previousElementSibling.innerText.toString().toLowerCase().replace('activitats ','').replace('l·l', 'l');
+            if(tipo == 'colectives'){
+                reservarColectiva(id,tipo.toLowerCase());
+            }else if(tipo == 'lliures'){
+                reservarLliure(id,tipo.toLowerCase());
+            }
+            
         }else{
             noPotsReservar(btn);
         }
@@ -34,7 +40,7 @@ function comprovarData(btn){
         const minTotalActivitat = (parseInt(horaActivitat.split(":")[0] * 60) + (parseInt(horaActivitat.split(":")[1])));
         const minTotalAvui = (horaAvui * 60) + (minutAvui);
         //Si el dia de l'activitat es mes tard que el dia d'avui o el dia de l'activitat es avui i la resta dels minuts totals es inferior o igual a 60, podrá fer la reserva
-        if( ((minTotalActivitat - minTotalAvui >= 60) && (diaActivitat == diaAvui)) || diaActivitat > diaAvui ){
+        if( ((minTotalActivitat - minTotalAvui >= 60) && (diaActivitat == diaAvui)) || diaActivitat > diaAvui || mesActivitat > mesAvui){
             return true;
         }else{
             return false;
@@ -43,11 +49,10 @@ function comprovarData(btn){
     return false;
 }
 
-function reservar() {
-    
-    const id = "";
+function reservarColectiva(id,tipo) {
+    console.log("entro aqui: " + tipo);
     const xhttp = new XMLHttpRequest();
-    xhttp.open('GET','reserva.php',true);
+    xhttp.open('GET','reserva.php?id='+id+'&tipo='+tipo,true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
         if(this,this.readyState == 4 && this.status == 200){
@@ -57,14 +62,26 @@ function reservar() {
     }
 }
 
+function reservarLliure(id,tipo) {
+    console.log("entro aqui: " + tipo);
+    // const xhttp = new XMLHttpRequest();
+    // xhttp.open('GET','reserva.php?id='+id+'&tipo='+tipo,true);
+    // xhttp.send();
+    // xhttp.onreadystatechange = function(){
+    //     if(this,this.readyState == 4 && this.status == 200){
+    //         let result = this.response;
+    //         console.log(result);
+    //     }
+    // }
+}
+
 function noPotsReservar(elem){
     const errorMessage = document.createElement("span");
     errorMessage.className = 'noReservaHora';
     errorMessage.innerText = "Momés pots reservar 60 minuts abans de l'inici de l'activitat";
-    //const errorMessage = `<span class="noReservaHora">Momés pots reservar 60 minuts abans de l'inici de l'activitat</span>`;
     const caixa = elem.parentElement;
     caixa.appendChild(errorMessage);
-    borrarMissatge()
+    borrarMissatge();
 }
 
 function borrarMissatge(){
