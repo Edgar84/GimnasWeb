@@ -50,9 +50,27 @@ function comprovarData(btn){
 }
 
 function reservarColectiva(id,tipo) {
-    console.log("entro aqui: " + tipo);
     const xhttp = new XMLHttpRequest();
-    xhttp.open('GET','reserva.php?id='+id+'&tipo='+tipo,true);
+    xhttp.open('GET','reserva_colectiva.php?id='+id+'&tipo='+tipo,true);
+    xhttp.send();
+    xhttp.onreadystatechange = function(){
+        if(this,this.readyState == 4 && this.status == 200){
+            let result = this.response;
+            //if(this.response == 'hola'){
+            //    alert('pots');
+                console.log(result);
+            //}else{
+            //    alert('no pots');
+            //    console.log(result);
+            //}
+            
+        }
+    }
+}
+
+function reservarLliure(id,tipo) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open('GET','reserva_lliure.php?id='+id+'&tipo='+tipo,true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
         if(this,this.readyState == 4 && this.status == 200){
@@ -60,19 +78,6 @@ function reservarColectiva(id,tipo) {
             console.log(result);
         }
     }
-}
-
-function reservarLliure(id,tipo) {
-    console.log("entro aqui: " + tipo);
-    // const xhttp = new XMLHttpRequest();
-    // xhttp.open('GET','reserva.php?id='+id+'&tipo='+tipo,true);
-    // xhttp.send();
-    // xhttp.onreadystatechange = function(){
-    //     if(this,this.readyState == 4 && this.status == 200){
-    //         let result = this.response;
-    //         console.log(result);
-    //     }
-    // }
 }
 
 function noPotsReservar(elem){

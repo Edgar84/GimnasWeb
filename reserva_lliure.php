@@ -9,6 +9,34 @@
     $id = $_GET["id"];
     $tipo = $_GET["tipo"];
 
+    ////////////// RESERVA LLIURE ///////////////
+    $sql = "CALL consultar_persones('" . $tipo ."','" . $dni . "')";
+    //$sql = "SELECT d.id FROM client a, reserva_lliure b, activitat c, activitat_lliure d WHERE a.dni = b.dni AND b.id = c.id AND c.id = d.id AND b.data > curdate() AND b.anulada is null AND a.dni ='" . $dni . "'";
+    $result = con()->query($sql);
+
+    if($row = $result->fetch_assoc()){
+        echo 'no pots';
+        // if (empty($row['id'])){
+        //     ferReserva($dni);
+        // }else{
+        //     echo 'no pots';
+        // }
+        // echo 'el id: ' . $row['id'], "\n";
+        // echo $tipo;
+    }
+
+    function ferReserva($dni){
+        $sql = "SELECT * FROM client WHERE client.dni =" . $dni . "'";
+        $result = con()->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            echo json_encode('Activitat Lliure:' . $row['dni'] . ' NOM: ' . $row['nom']);
+        }  
+
+    }
+
+
+
+
     // $stmt = odbc_prepare($odbc, "CALL consultar_persones(?, ?)");
     // $result = odbc_execute($stmt, [$tipo, $dni]);
 
@@ -25,12 +53,7 @@
     //         }
     //         break;
     //     case 'LLIURES':
-            $sql = "SELECT d.id FROM client a, reserva_lliure b, activitat c, activitat_lliure d WHERE a.dni = b.dni AND b.id = c.id AND c.id = d.id AND b.data > curdate() AND b.anulada is null AND a.dni ='" . $dni . "'";
-            $result = con()->query($sql);
-            if($row = $result->fetch_assoc()){
-                echo 'el id: ' . $row['id'], "\n";
-                echo $tipo;
-            }
+            
         //     }
         //     break;
         // }
