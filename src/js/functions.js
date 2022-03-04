@@ -8,11 +8,10 @@ buttonsReserva.forEach(btn => {
             const tipo = btn.parentElement.parentElement.parentElement.parentElement.previousElementSibling.innerText.toString().toLowerCase().replace('activitats ','').replace('l·l', 'l');
             const data = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
             const hora = btn.previousElementSibling.firstElementChild.nextElementSibling.innerText.slice(0, -1) + ":00";
-            reservar(id_act,tipo,data,hora);
+            reservar(id_act,tipo,data,hora,btn);
         }else{
-            noPotsReservar(btn);
+            noPotsReservar(btn, false);
         }
-        
     });
 });
 
@@ -46,33 +45,45 @@ function comprovarData(btn){
     return false;
 }
 
-function reservar(id,tipo,data,hora) {
+function reservar(id_act,tipo,data,hora,btn) {
     const xhttp = new XMLHttpRequest();
-    xhttp.open('GET','reserva.php?id='+id+'&tipo='+tipo+'&data='+data+'&hora='+hora,true);
+    xhttp.open('GET','reserva.php?id='+id_act+'&tipo='+tipo+'&data='+data+'&hora='+hora,true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
         if(this,this.readyState == 4 && this.status == 200){
             let result = this.response;
             if(result == ''){
+                noPotsReservar(btn,true);
                 console.log('no pots');
+            }else if(result == 'Si pots'){
+                reservaFeta(btn,);
             }
-                console.log(result);
-            
         }
     }
 }
 
-function noPotsReservar(elem){
+function noPotsReservar(btn,elem){
     const errorMessage = document.createElement("span");
     errorMessage.className = 'noReservaHora';
-    errorMessage.innerText = "Momés pots reservar 60 minuts abans de l'inici de l'activitat";
-    const caixa = elem.parentElement;
+    if(elem == true){
+        errorMessage.innerText = "Ja tens una reserva d'aquest tipus feta";
+    }else{
+        errorMessage.innerText = "Momés pots reservar 60 minuts abans de l'inici de l'activitat";
+    }
+    const caixa = btn.parentElement;
     caixa.appendChild(errorMessage);
     borrarMissatge();
 }
 
-function reservaFeta(elem){
+function reservaFeta(btn){
+    const okMessage = document.createElement("span");
+    okMessage.className = 'noReservaHora';
+    okMessage.innerText = "Reserva feta satisfactoriament";
+    const caixa = elem.parentElement;
+    caixa.appendChild(okMessage);
+    borrarMissatge();
 }
+
 
 function borrarMissatge(){
     setTimeout(function(){

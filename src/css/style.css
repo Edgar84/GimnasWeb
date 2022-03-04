@@ -23,6 +23,10 @@ footer .logo {
     width: 70px;
 }
 
+body {
+    position: relative;
+}
+
 .login-main {
     display: flex;
     justify-content: center;
@@ -284,6 +288,28 @@ footer ul.nav {
     text-align: center;
     font-size: 1.5rem;
 }
+
+.backgroundMessage {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alert.alert-success {
+    max-width: 1200px;
+}
+
+@keyframes missatge {
+    0%   {margin-top: -15px;}
+    25%  {margin-top: -30px;}
+    50%  {margin-top: -60px;}
+    100% {margin-top: -75px;}
+  }
 
 .login-error{
     color: #D8000C;
