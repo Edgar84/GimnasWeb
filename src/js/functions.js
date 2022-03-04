@@ -3,15 +3,12 @@ const buttonsReserva = document.querySelectorAll('.btn-reserva');
 
 buttonsReserva.forEach(btn => {
     btn.addEventListener('click', function(){
-        const id = btn.getAttribute('id');
+        const id_act = btn.getAttribute('id');
         if(comprovarData(btn)){
             const tipo = btn.parentElement.parentElement.parentElement.parentElement.previousElementSibling.innerText.toString().toLowerCase().replace('activitats ','').replace('l·l', 'l');
-            if(tipo == 'colectives'){
-                reservarColectiva(id,tipo.toLowerCase());
-            }else if(tipo == 'lliures'){
-                reservarLliure(id,tipo.toLowerCase());
-            }
-            
+            const data = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
+            const hora = btn.previousElementSibling.firstElementChild.nextElementSibling.innerText.slice(0, -1) + ":00";
+            reservar(id_act,tipo,data,hora);
         }else{
             noPotsReservar(btn);
         }
@@ -49,33 +46,18 @@ function comprovarData(btn){
     return false;
 }
 
-function reservarColectiva(id,tipo) {
+function reservar(id,tipo,data,hora) {
     const xhttp = new XMLHttpRequest();
-    xhttp.open('GET','reserva_colectiva.php?id='+id+'&tipo='+tipo,true);
+    xhttp.open('GET','reserva.php?id='+id+'&tipo='+tipo+'&data='+data+'&hora='+hora,true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
         if(this,this.readyState == 4 && this.status == 200){
             let result = this.response;
-            //if(this.response == 'hola'){
-            //    alert('pots');
+            if(result == ''){
+                console.log('no pots');
+            }
                 console.log(result);
-            //}else{
-            //    alert('no pots');
-            //    console.log(result);
-            //}
             
-        }
-    }
-}
-
-function reservarLliure(id,tipo) {
-    const xhttp = new XMLHttpRequest();
-    xhttp.open('GET','reserva_lliure.php?id='+id+'&tipo='+tipo,true);
-    xhttp.send();
-    xhttp.onreadystatechange = function(){
-        if(this,this.readyState == 4 && this.status == 200){
-            let result = this.response;
-            console.log(result);
         }
     }
 }
@@ -87,6 +69,9 @@ function noPotsReservar(elem){
     const caixa = elem.parentElement;
     caixa.appendChild(errorMessage);
     borrarMissatge();
+}
+
+function reservaFeta(elem){
 }
 
 function borrarMissatge(){

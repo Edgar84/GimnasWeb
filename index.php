@@ -107,8 +107,8 @@
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span><?php echo $row['data']?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
                             <button class="btn btn-primary btn-reserva" type="button" id="<?php echo $row['id']?>">
                                 Reservar
                             </button>
@@ -134,8 +134,8 @@
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span><?php echo $row['data']?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
                             <button class="btn btn-primary btn-reserva" type="button" id="<?php echo $row['id']?>">
                                 Reservar
                             </button>
