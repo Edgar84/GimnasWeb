@@ -12,6 +12,9 @@ buttonsReserva.forEach(btn => {
         }else{
             noPotsReservar(btn, false);
         }
+        if(btn.innerText == "Anular"){
+            anularReserva(id_act, tipo);
+        }
     });
 });
 
@@ -56,15 +59,27 @@ function reservar(id_act,tipo,data,hora,btn) {
                 noPotsReservar(btn,true);
                 console.log('no pots');
             }else if(result == 'Si pots'){
-                reservaFeta(btn,);
+                reservaFeta(btn);
             }
         }
     }
 }
 
+function anularReserva(id_act, tipo) {
+    const xhttp = new XMLHttpRequest();
+    xhttp.open('GET','anulara.php?id='+id_act+'&tipo='+tipo,true);
+    xhttp.send();
+    xhttp.onreadystatechange = function(){
+        if(this,this.readyState == 4 && this.status == 200){
+            let result = this.response;
+        }
+    }
+}
+
 function noPotsReservar(btn,elem){
-    const errorMessage = document.createElement("span");
-    errorMessage.className = 'noReservaHora';
+    console.log(btn);
+    let errorMessage = document.createElement("span");
+    errorMessage.className = 'style_reserva noReservaHora';
     if(elem == true){
         errorMessage.innerText = "Ja tens una reserva d'aquest tipus feta";
     }else{
@@ -76,18 +91,20 @@ function noPotsReservar(btn,elem){
 }
 
 function reservaFeta(btn){
-    const okMessage = document.createElement("span");
-    okMessage.className = 'noReservaHora';
+    let okMessage = document.createElement("span");
+    okMessage.className = 'style_reserva reservaFeta';
     okMessage.innerText = "Reserva feta satisfactoriament";
-    const caixa = elem.parentElement;
+    console.log(btn.parentElement);
+    let caixa = btn.parentElement;
     caixa.appendChild(okMessage);
     borrarMissatge();
+    btn.innerText = 'Anular';
+    btn.className = 'btn btn-warning';
 }
-
 
 function borrarMissatge(){
     setTimeout(function(){
-        document.querySelector('.noReservaHora').remove();
+        document.querySelector('.style_reserva').remove();
     },3000);
 }
 

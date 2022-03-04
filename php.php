@@ -96,7 +96,7 @@
                 b.num = c.num AND
                 d.num = c.num AND
                 b.data > curdate() AND
-                e.anulada = 0 AND
+                e.anulada is null AND
                 e.dni = '" . $_SESSION['dni'] . "' AND
                 a.id IN
                     (SELECT *
@@ -113,7 +113,7 @@
                 b.num = c.num AND
                 d.num = c.num AND
                 b.data > curdate() AND
-                e.anulada = 0 AND
+                e.anulada is null AND
                 e.dni = '" . $_SESSION['dni'] . "' AND
                 a.id IN
                     (SELECT *
@@ -130,7 +130,7 @@
                 b.num = c.num AND
                 d.num = c.num AND
                 b.data < curdate() AND
-                e.anulada = 0 AND
+                e.anulada is null AND
                 e.dni = '" . $_SESSION['dni'] . "' AND
                 a.id IN
                     (SELECT *
@@ -147,7 +147,7 @@
                 b.num = c.num AND
                 d.num = c.num AND
                 b.data < curdate() AND
-                e.anulada = 0 AND
+                e.anulada is null AND
                 e.dni = '" . $_SESSION['dni'] . "' AND
                 a.id IN
                     (SELECT *
