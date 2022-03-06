@@ -1,8 +1,8 @@
 <?php
     //Mostrar errors
-        // ini_set('display_errors', 1);
-        // ini_set('display_startup_errors', 1);
-        // error_reporting(E_ALL);
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
 
     require 'connexio.php';
     session_start();
@@ -11,20 +11,21 @@
         $dni = $_SESSION['dni'];
     }
 
+    $tipo = $_GET["tipo"];
+    $data = $_GET["data"];
+    $hora = $_GET["hora"];
     $id_act = $_GET["id_act"];
-    $id_act = $_GET["tipo"];
     
-
-    $sql = "UPDATE reserva_colectiva SET anulada = 1 WHERE id_act =".id_act." AND dni =".$dni"
-    SET sueldo_bruto = '50000',
-    prima_objetivos = '3000'
-    WHERE sueldo_bruto < 45000 AND sueldo_bruto > 40000
-    ORDER BY antiguedad DESC LIMIT 50";
+    
+    
+    
+    $sql = "CALL anular_reserva('" . $tipo . "','" . $data . "', '" . $hora . "', '" . $dni . "', " . $id_act . ");";
 
     $result = con()->query($sql);
 
-    if($result && mysqli_num_rows($result)==0){
-        
+    if ($result){
+        $afectados = mysqli_affected_rows(con());
+        echo "Cantidad de filas afectadas: ".$afectados;
     }
 
 

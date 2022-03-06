@@ -67,7 +67,7 @@
                 $sql = "UPDATE client SET telefon = '" . $_POST['tel'] . "',
                 email = '" . $_POST['email'] . "',
                 usuari = '" . $_POST['user'] . "',
-                contrasenya = '" . sha1($_POST['password']) . "',
+                contrasenya = '" . md5($_POST['password']) . "',
                 comunicacio_comercial = '" . $_POST['info'] . "' 
                 WHERE dni = '" . $_SESSION['dni'] . "'";
                 $result = con()->query($sql);

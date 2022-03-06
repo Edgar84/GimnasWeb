@@ -4,16 +4,18 @@ const buttonsReserva = document.querySelectorAll('.btn-reserva');
 buttonsReserva.forEach(btn => {
     btn.addEventListener('click', function(){
         const id_act = btn.getAttribute('id');
-        if(comprovarData(btn)){
-            const tipo = btn.parentElement.parentElement.parentElement.parentElement.previousElementSibling.innerText.toString().toLowerCase().replace('activitats ','').replace('l·l', 'l');
-            const data = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
-            const hora = btn.previousElementSibling.firstElementChild.nextElementSibling.innerText.slice(0, -1) + ":00";
-            reservar(id_act,tipo,data,hora,btn);
-        }else{
-            noPotsReservar(btn, false);
-        }
+        const tipo = btn.parentElement.parentElement.parentElement.parentElement.previousElementSibling.innerText.toString().toLowerCase().replace('activitats ','').replace('l·l', 'l');
+        const data = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
+        const hora = btn.previousElementSibling.firstElementChild.nextElementSibling.innerText.slice(0, -1) + ":00";
+
         if(btn.innerText == "Anular"){
-            anularReserva(id_act, tipo);
+            anularReserva(tipo, data, hora, id_act, btn);
+        }else{
+            if(comprovarData(btn)){
+                reservar(id_act, tipo, data, hora, btn);
+            }else{
+                noPotsReservar(btn, false);
+            }
         }
     });
 });
@@ -65,19 +67,21 @@ function reservar(id_act,tipo,data,hora,btn) {
     }
 }
 
-function anularReserva(id_act, tipo) {
+function anularReserva(tipo, data, hora, id_act, btn) {
     const xhttp = new XMLHttpRequest();
-    xhttp.open('GET','anulara.php?id='+id_act+'&tipo='+tipo,true);
+    xhttp.open('GET','anular.php?tipo='+tipo+'&data='+data+"&hora="+hora+"&id_act="+id_act,true);
     xhttp.send();
     xhttp.onreadystatechange = function(){
         if(this,this.readyState == 4 && this.status == 200){
             let result = this.response;
+            console.log(result);
+            btn.className = 'btn btn-primary btn-reserva';
+            btn.innerText = 'Reservar';
         }
     }
 }
 
 function noPotsReservar(btn,elem){
-    console.log(btn);
     let errorMessage = document.createElement("span");
     errorMessage.className = 'style_reserva noReservaHora';
     if(elem == true){
@@ -94,7 +98,6 @@ function reservaFeta(btn){
     let okMessage = document.createElement("span");
     okMessage.className = 'style_reserva reservaFeta';
     okMessage.innerText = "Reserva feta satisfactoriament";
-    console.log(btn.parentElement);
     let caixa = btn.parentElement;
     caixa.appendChild(okMessage);
     borrarMissatge();

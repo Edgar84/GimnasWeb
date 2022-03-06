@@ -136,9 +136,18 @@
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
+                            <!--<p class="card-text"><span class="text-muted text-size-sm">anulada:</span><span class="hora_act"><?php //echo $row['anulada'] ?></span></p>-->
+                            <?php //if($row['anulada'] == 1){ ?>
+                            <!--<button class="btn btn-warning" type="button" id="<?php //echo $row['id']?>">
+                                Anular
+                            </button>-->
+                            <?php //} else{ ?>
                             <button class="btn btn-primary btn-reserva" type="button" id="<?php echo $row['id']?>">
                                 Reservar
                             </button>
+                            <?php //}
+                            ?>
+                            
                         </div>
                       </div>
                 </div>
