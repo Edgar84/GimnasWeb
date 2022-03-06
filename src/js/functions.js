@@ -112,6 +112,9 @@ function borrarMissatge(){
     },3000);
 }
 
+function anularBotons() {
+
+}
 
 
 
