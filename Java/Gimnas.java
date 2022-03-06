@@ -11,6 +11,7 @@ public class Gimnas {
     private String CIF;
     private String telefon;
     private ArrayList<Client> clients;
+    private ArrayList<Activitat> activitats;
     
     Scanner teclat = new Scanner(System.in);
 
@@ -20,7 +21,8 @@ public class Gimnas {
         do {
             System.out.println("**********MENU GIMNAS**********");
             System.out.println("1. Gestió Clients");
-            System.out.println("2. Sortir");     
+            System.out.println("2. Visualitzar activitats");
+            System.out.println("3. Sortir");     
 
         int opcio = teclat.nextInt();
 
@@ -29,6 +31,9 @@ public class Gimnas {
                 gestioClients();
                 break;
             case 2:
+                visualitzarActivitats();
+                break;
+            case 3:
                 sortir = true;
                 break;
             default:
@@ -62,8 +67,10 @@ public class Gimnas {
             altaClient();
                 break;
             case 4:
+            baixaClient();
                 break;
             case 5:
+            modificarClient();
                 break;
             case 6:
                 sortir = true;
@@ -86,6 +93,16 @@ public class Gimnas {
         c.altaClient();
     }
 
+    private void baixaClient() throws SQLException{
+        Client c = new Client();
+        c.baixaClient();
+    }
+
+    private void modificarClient() throws NoSuchAlgorithmException, SQLException {
+        Client c = new Client();
+        c.modificarClient();
+    }
+
     public void visualitzarClients() throws SQLException {
         boolean sortir = false;
         Scanner teclat = new Scanner(System.in);
@@ -104,17 +121,22 @@ public class Gimnas {
                 this.clients = c.ordenarPerCognom();
                 for (Client client : clients) {
                     System.out.println(client);
+                    System.out.println("------------------------------");
                 }
                 break;
             case 2:
                 this.clients = c.ordenarPerEdat();
+                for (Client client : clients) {
+                    System.out.println(client);
+                    System.out.println("------------------------------");
+                }
                 break;
             case 3:
                 this.clients = c.ordenarPerReserves();
                 for (Client client : clients) {
                     System.out.println(client);
+                    System.out.println("------------------------------");
                 }
-
                 break;
             case 4:
                 sortir = true;
@@ -123,6 +145,15 @@ public class Gimnas {
                 System.out.println("Valor no vàlid");
         }
         } while (!sortir);
+    }
+
+    private void visualitzarActivitats() throws SQLException {
+        Activitat a = new Activitat();
+        this.activitats = a.visualitzarActivitats();
+        for (Activitat activitat : activitats) {
+            System.out.println(activitat);
+            System.out.println("------------------------------");
+        }
     }
 }
 

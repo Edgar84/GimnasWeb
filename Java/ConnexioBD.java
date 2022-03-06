@@ -6,7 +6,7 @@ public class ConnexioBD {
     private String servidor;
     private String bbdd;
     private String user;
-    private String password; 
+    private String password;
 
     static Connection connexioBD = null;
 
@@ -27,6 +27,8 @@ public class ConnexioBD {
     public void desconnexioBD() throws SQLException {
         connexioBD.close();
     }
-
 }
+
+
+
 

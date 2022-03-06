@@ -47,7 +47,7 @@ public class Dni {
 
     @Override
     public String toString() {
-        return "Dni [dni=" + dni + ", lletra=" + lletra + ", numeros=" + numeros + "]";
+        return "Dni [dni=" + dni + "]";
     }
     
 }
