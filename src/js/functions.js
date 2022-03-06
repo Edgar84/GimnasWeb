@@ -59,6 +59,7 @@ function reservar(id_act,tipo,data,hora,btn) {
             let result = this.response;
             if(result == ''){
                 noPotsReservar(btn,true);
+                console.log('Resposta' + result);
                 console.log('no pots');
             }else if(result == 'Si pots'){
                 reservaFeta(btn);
