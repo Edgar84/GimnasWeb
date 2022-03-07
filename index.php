@@ -99,7 +99,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
+                            <img src="src/img/<?php echo $row['id']?>.jpg" class="card-img-top " alt="<?php echo $row['activitat']?>">
                             <?php echo  '<span class="color color-' . $row['color'] . '"></span>' ?>
                         </figure>
                         <div class="card-body">
@@ -126,7 +126,7 @@
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                     <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
+                    <img src="src/img/<?php echo $row['id']?>.jpg" class="card-img-top " alt="<?php echo $row['activitat']?>">
                             <?php echo  '<span class="color color-' . $row['color'] . '"></span>' ?>
                         </figure>
                         <div class="card-body">

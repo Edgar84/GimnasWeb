@@ -242,6 +242,14 @@ footer ul.nav {
         width: 250px;
     }
 
+    .card figure {
+        height: 168px;
+    }
+
+    .card figure .card-img-top {
+        height: 100%;
+    }
+
     footer {
         justify-content: space-between;
     }
