@@ -94,7 +94,7 @@
             <div class="home-title">
                 <h2>Activitats lliures</h2>
             </div>
-            <section class="row card-section">
+            <section class="row card-section card-section--lliures">
             <?php $result = infoActivitatsLliures(); while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
@@ -121,7 +121,7 @@
             <div class="home-title">
                 <h2>Activitats col·lectives</h2>
             </div>
-            <section class="row card-section">
+            <section class="row card-section card-section--colectives">
             <?php $result = infoActivitatsColectives(); while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >

@@ -10,6 +10,10 @@ buttonsReserva.forEach(btn => {
 
         if(btn.innerText == "Anular"){
             anularReserva(tipo, data, hora, id_act, btn);
+        }else if(comprovarData(btn) && btn.innerText == "Reservar" && tipo == 'colectives' && existBtnAnularCol()){
+            noPotsReservar(btn,true);
+        }else if(comprovarData(btn) && btn.innerText == "Reservar" && tipo == 'lliures' && existBtnAnularLLi()){
+            noPotsReservar(btn,true);
         }else{
             if(comprovarData(btn)){
                 reservar(id_act, tipo, data, hora, btn);
@@ -20,21 +24,37 @@ buttonsReserva.forEach(btn => {
     });
 });
 
+function existBtnAnularCol(){
+    if(document.body.contains(document.querySelector('.card-section--colectives .btn-warning'))){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+function existBtnAnularLLi(){
+    if(document.body.contains(document.querySelector('.card-section--lliures .btn-warning'))){
+        return true;
+    } else{
+        return false;
+    }
+}
+
 function comprovarData(btn){
     //Agafem de la data de l'activitat en un array i agafem l'hora de l'activitat
     let dataActivitat = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText.split("-");
     let horaActivitat = btn.previousElementSibling.firstElementChild.nextElementSibling.innerText;
     //Asignem a una variable per l'any,el mes i el dia de la data de l'activitat
-    var anyActivitat = parseInt(dataActivitat[0]);
-    var mesActivitat = parseInt(dataActivitat[1]);
-    var diaActivitat = parseInt(dataActivitat[2]);
+    let anyActivitat = parseInt(dataActivitat[0]);
+    let mesActivitat = parseInt(dataActivitat[1]);
+    let diaActivitat = parseInt(dataActivitat[2]);
     //Creem un objecte data i extreiem l'any, mes, dia, hora i minuts
     const dt = new Date();
-    var anyAvui = dt.getFullYear();
-    var mesAvui = dt.getMonth() + 1;
-    var diaAvui = dt.getDate();
-    var horaAvui = dt.getHours();
-    var minutAvui = dt.getMinutes();
+    let anyAvui = dt.getFullYear();
+    let mesAvui = dt.getMonth() + 1;
+    let diaAvui = dt.getDate();
+    let horaAvui = dt.getHours();
+    let minutAvui = dt.getMinutes();
     //Comprobem si la data de l'activitat es més gran o igual que la data d'avui
     if( (anyActivitat >= anyAvui && mesActivitat > mesAvui) || (anyActivitat >= anyAvui && mesActivitat == mesAvui && diaActivitat >= diaAvui) ){
         //Contem els minuts totals de la hora de l'activitat i els minuts totals del dia d'avui
@@ -113,7 +133,16 @@ function borrarMissatge(){
 }
 
 function anularBotons() {
-
+    buttonsReserva.forEach(btn => {
+        btn.addEventListener('click', function(){
+            btn(e).preventDefault();
+            if(comprovarData(btn) && btn.innerText == "Reservar"){
+                btn.setAttribute('disabled','disabled');
+                noPotsReservar(btn,true);
+            }
+         });
+    });
+        
 }
 
 
