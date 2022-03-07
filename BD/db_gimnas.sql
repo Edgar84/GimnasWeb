@@ -417,3 +417,11 @@ SET _sala = (SELECT a.num
 	
 END
 //
+
+DELIMITER //
+CREATE EVENT event_copiar_activitats
+    ON SCHEDULE EVERY 24 HOUR
+DO
+    UPDATE es_fa SET `data` = (date_add(`data`, interval  1 day)) WHERE es_fa.id IN (SELECT id FROM activitat);
+END;
+//
