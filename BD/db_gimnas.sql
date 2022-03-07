@@ -277,3 +277,143 @@ e.dni = f.dni AND
 a.id IN
 	(SELECT *
 	FROM activitat_lliure);      
+DELIMITER //
+CREATE PROCEDURE consultar_persones(IN _tipus VARCHAR(30), IN _data DATE, IN _hora TIME, IN _dni VARCHAR(9), IN _id_act INT)
+ BEGIN
+	 IF _tipus = 'colectives' 
+		THEN 
+			IF 
+				(SELECT count(d.id) as num FROM client a, reserva_colectiva b, activitat c, activitat_colectiva d 
+				WHERE a.dni = b.dni AND b.id = c.id AND c.id = d.id AND b.anulada is null AND a.dni = _dni AND _data IN 
+                (SELECT `data` FROM reserva_colectiva WHERE reserva_colectiva.dni = _dni)) > 0
+			THEN
+                SELECT "no pots";
+			ELSE
+				INSERT INTO reserva_colectiva (`data`,`hora`, dni, id_act) 
+				VALUES (_data, _hora, _dni, _id_act);
+                END IF;
+     ELSE IF _tipus = 'lliures' 
+		THEN 
+			IF
+				(SELECT count(d.id) as num FROM client a, reserva_lliure b, activitat c, activitat_lliure d 
+				WHERE a.dni = b.dni AND b.id = c.id AND c.id = d.id AND b.anulada is null AND a.dni = _dni AND _data IN 
+                (SELECT `data` FROM reserva_lliure WHERE reserva_lliure.dni = _dni)) > 0
+			THEN
+				SELECT "no pots";
+			ELSE
+				INSERT INTO reserva_lliure (`data`,`hora`, dni, id_act) 
+				VALUES (_data, _hora, _dni, _id_act);
+			 END IF;
+		 END IF;
+     END IF;
+ END;
+//
+
+			(SELECT d.id as num FROM client a, reserva_colectiva b, activitat c, activitat_colectiva d 
+				WHERE a.dni = b.dni AND b.id = c.id AND c.id = d.id AND b.data > curdate()AND b.anulada is null AND a.dni = _dni) 
+			THEN
+                SELECT "no pots";
+			ELSE
+				INSERT INTO reserva_colectiva (`data`,`hora`, dni, id_act) 
+				VALUES (_data, _hora, _dni, _id_act);
+                END IF;
+     ELSE IF _tipus = 'lliures' 
+		THEN 
+			IF EXISTS
+				(SELECT d.id as num FROM client a, reserva_lliure b, activitat c, activitat_lliure d 
+				WHERE a.dni = b.dni AND b.id = c.id AND c.id = d.id AND b.data > curdate() AND b.anulada is null AND a.dni = _dni)
+			THEN
+				SELECT "no pots";
+			ELSE
+				INSERT INTO reserva_lliure (`data`,`hora`, dni, id_act) 
+				VALUES (_data, _hora, _dni, _id_act);
+			 END IF;
+		 END IF;
+     END IF;
+ END;
+//
+
+CALL consultar_persones('colectives','2022-05-08', '16:30:00', '1234567L', 3);
+
+
+ #####TRIGGERS AFORAMENT
+ 
+DELIMITER //
+drop trigger if exists restar_aforament_colectiva;
+CREATE TRIGGER restar_aforament_colectiva AFTER INSERT ON reserva_colectiva FOR EACH ROW
+BEGIN
+DECLARE _sala integer;
+SET _sala = (SELECT a.num
+	FROM sala a, es_fa b
+	WHERE a.num = b.num AND
+	b.id = 
+		(SELECT id_act
+		FROM reserva_colectiva a
+		Order by id desc limit 1));
+        
+ UPDATE sala
+ SET aforament_max = aforament_max -1
+ WHERE num = _sala;
+	
+END
+//
+
+DELIMITER //
+drop trigger if exists restar_aforament_lliure;
+CREATE TRIGGER restar_aforament_lliure AFTER INSERT ON reserva_lliure FOR EACH ROW
+BEGIN
+DECLARE _sala integer;
+SET _sala = (SELECT a.num
+	FROM sala a, es_fa b
+	WHERE a.num = b.num AND
+	b.id = 
+		(SELECT id_act
+		FROM reserva_lliure a
+		Order by id desc limit 1));
+        
+ UPDATE sala
+ SET aforament_max = aforament_max -1
+ WHERE num = _sala;
+	
+END
+//
+
+DELIMITER //
+drop trigger if exists sumar_aforament_lliure;
+CREATE TRIGGER sumar_aforament_lliure AFTER UPDATE ON reserva_lliure FOR EACH ROW
+BEGIN
+DECLARE _sala integer;
+SET _sala = (SELECT a.num
+	FROM sala a, es_fa b
+	WHERE a.num = b.num AND
+	b.id = 
+		(SELECT id_act
+		FROM reserva_lliure a
+		Order by id desc limit 1));
+        
+ UPDATE sala
+ SET aforament_max = aforament_max +1
+ WHERE num = _sala;
+	
+END
+//
+
+DELIMITER //
+drop trigger if exists sumar_aforament_colectiva;
+CREATE TRIGGER sumar_aforament_colectiva AFTER UPDATE ON reserva_colectiva FOR EACH ROW
+BEGIN
+DECLARE _sala integer;
+SET _sala = (SELECT a.num
+	FROM sala a, es_fa b
+	WHERE a.num = b.num AND
+	b.id = 
+		(SELECT id_act
+		FROM reserva_colectiva a
+		Order by id desc limit 1));
+        
+ UPDATE sala
+ SET aforament_max = aforament_max +1
+ WHERE num = _sala;
+	
+END
+//
