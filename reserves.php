@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reserves - Top Gym</title>
+    <title>Fitxa - Top Gim</title>
     <link rel="stylesheet" href="src/css/reset.css"/>
     <link rel="stylesheet" href="src/css/bootstrap-4.6.1/bootstrap.min.css"/>
     <link rel="stylesheet" href="src/css/fontawesome/all.min.css"/>
@@ -31,7 +31,7 @@
                 <div class="collapse navbar-collapse justify-content-sm-end" id="burguerMenu">   
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php#activitats">Activitats</a>
+                            <a class="nav-link" href="index.php">Activitats</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="competicions.xml">Competicions</a>
@@ -71,44 +71,52 @@
                         <h2>Reserves pendents</h2>
                     </div>
                 </div>
+                <?php $result = obtenirReservesLliuresPendents(); while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
                             <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                            <span class=<?php echo $row['color']?>></span>
                         </figure>
                         <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Col·lectiva</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
+                            <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span class="lliures">Lliure</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
+                            <button class="btn btn-warning" type="button" id="<?php echo $row['id']?>">
+                                Anular
                             </button>
                         </div>
                       </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3">
+                <?php }?>
+                <?php $result = obtenirReservesColectivesPendents(); while ($row = $result->fetch_assoc()) { ?>
+                    <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
                             <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                            <span class=<?php echo $row['color']?>></span>
                         </figure>
                         <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Lliure</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
+                            <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span class="colectives">Col·lectiva</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
+                            <button class="btn btn-warning" type="button" id="<?php echo $row['id']?>">
+                                Anular
                             </button>
                         </div>
                       </div>
                 </div>
+                <?php }?>
             </div>
             <div class="row mb-5">
                 <div class="col-12">
@@ -116,57 +124,55 @@
                         <h2>Reserves finalitzades</h2>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3">
+                <?php $result = obtenirReservesLliuresFinalitzades(); while ($row = $result->fetch_assoc()) { ?>
+                    <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
                             <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                            <span class=<?php echo $row['color']?>></span>
                         </figure>
                         <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
+                            <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Col·lectiva</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
                         </div>
                       </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-3">
+                <?php }?>
+                <?php $result = obtenirReservesColectivesFinalitzades(); while ($row = $result->fetch_assoc()) { ?>
+                    <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
                             <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                            <span class=<?php echo $row['color']?>></span>
                         </figure>
                         <div class="card-body">
-                            <h2 class="h4">Natació</h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span>9:50h</span></p>
+                            <h2 class="h4"><?php echo $row['activitat']?></h2>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Col·lectiva</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span>12/30</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span>Josep García</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span>Piscines</span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
-                            </button>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
                         </div>
                       </div>
                 </div>
+                <?php }?>
             </div>
         </div>
     </main>
     <div class="container">
         <footer class="d-flex flex-wrap border-top">
             <p class="col-md-5 mb-0 text-muted">© 1<sup>er</sup> de DAM - Projecte 2</p>
-            <a class="logo" href="index.php">
+            <a class="logo" href="index.html">
                 <img src="src/img/logo-v4.png" class="img-fluid" alt="Top gym - El dolor es temporal">
             </a>
             <ul class="nav col-md-5">
-                <li class="nav-item"><a href="index.php" class="nav-link px-2 text-muted">Home</a></li>
-                <li class="nav-item"><a href="index.php#activitats" class="nav-link px-2 text-muted">Activitats</a></li>
-                <li class="nav-item"><a href="competicions.xml" class="nav-link px-2 text-muted">Competicions</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Activitats</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Competicions</a></li>
             </ul>
         </footer>
     </div>

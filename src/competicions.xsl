@@ -32,10 +32,10 @@
                             <li class="nav-item">
                                 <a class="nav-link active" href="competicions.xml">Competicions</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item user-header">
                                 <a class="nav-link" href="login.php">Entrar</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item sortir">
                                 <a class="nav-link" href="#">
                                     <i class="fas fa-sign-out-alt"></i>
                                 </a>
@@ -68,9 +68,17 @@
                                     <p class="card-text"><span class="text-muted text-size-sm">Data:</span><span><xsl:value-of select="date"></xsl:value-of></span></p>
                                     <p class="card-text"><span class="text-muted text-size-sm">Descripció:</span></p>
                                     <p class="card-text"><xsl:value-of select="description"></xsl:value-of></p>
-                                    <button class="btn btn-primary" type="button">
-                                        Apuntar-se
-                                    </button>
+                                    <xsl:element name="button">
+                                        <xsl:attribute name="id">
+                                            <xsl:value-of select="button/@id"/>
+                                        </xsl:attribute>
+                                        <xsl:attribute name="class">
+                                            btn btn-primary
+                                        </xsl:attribute>
+                                        <xsl:attribute name="type">
+                                            button
+                                        </xsl:attribute>
+                                    </xsl:element>
                                 </div>
                             </div>
                         </div>
@@ -91,10 +99,10 @@
                 </ul>
             </footer>
         </div>
-
-        <script src="src/js/competicions.js"></script>
+        
         <script src="src/js/bootstrap-4.6.1/jquery3_6_0.slim.min.js"></script>
         <script src="src/js/bootstrap-4.6.1/bootstrap.min.js"></script>
+        <script src="src/js/competicions.js"></script>
     </body>
   </html>
   

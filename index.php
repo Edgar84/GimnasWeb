@@ -94,21 +94,22 @@
             <div class="home-title">
                 <h2>Activitats lliures</h2>
             </div>
-            <section class="row card-section">
+            <section class="row card-section card-section--lliures">
             <?php $result = infoActivitatsLliures(); while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                         <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                            <img src="src/img/<?php echo $row['id']?>.jpg" class="card-img-top " alt="<?php echo $row['activitat']?>">
+                            <?php echo  '<span class="color color-' . $row['color'] . '"></span>' ?>
                         </figure>
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <button class="btn btn-primary" type="button">
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
+                            <button class="btn btn-primary btn-reserva" type="button" id="<?php echo $row['id']?>">
                                 Reservar
                             </button>
                         </div>
@@ -120,23 +121,33 @@
             <div class="home-title">
                 <h2>Activitats col·lectives</h2>
             </div>
-            <section class="row card-section">
+            <section class="row card-section card-section--colectives">
             <?php $result = infoActivitatsColectives(); while ($row = $result->fetch_assoc()) { ?>
                 <div class="col-12 col-sm-6 col-md-3">
                     <div class="card" >
                     <figure>
-                            <img src="src/img/x.png" class="card-img-top " alt="...">
-                            <span class="color-x"></span>
+                    <img src="src/img/<?php echo $row['id']?>.jpg" class="card-img-top " alt="<?php echo $row['activitat']?>">
+                            <?php echo  '<span class="color color-' . $row['color'] . '"></span>' ?>
                         </figure>
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
-                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <button class="btn btn-primary btn-reserva" type="button">
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
+                            <!--<p class="card-text"><span class="text-muted text-size-sm">anulada:</span><span class="hora_act"><?php //echo $row['anulada'] ?></span></p>-->
+                            <?php //if($row['anulada'] == 1){ ?>
+                            <!--<button class="btn btn-warning" type="button" id="<?php //echo $row['id']?>">
+                                Anular
+                            </button>-->
+                            <?php //} else{ ?>
+                            <button class="btn btn-primary btn-reserva" type="button" id="<?php echo $row['id']?>">
                                 Reservar
                             </button>
+                            <?php //}
+                            ?>
+                            
                         </div>
                       </div>
                 </div>

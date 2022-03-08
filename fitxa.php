@@ -2,9 +2,7 @@
     include 'php.php';
     session_start();
     $success = '';
-    modificarDadesClient();
-    obtenirDadesUsuari();
-    
+    modificarDadesClient();    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,7 +36,7 @@
                             <a class="nav-link" href="index.php#activitats">Activitats</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="competicions.xml">Competicions</a>
+                            <a class="nav-link" href="competicions.php">Competicions</a>
                         </li>
                         <?php if (empty($_SESSION['usuari'])) {?>
                         <li class="nav-item">
