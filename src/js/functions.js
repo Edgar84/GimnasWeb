@@ -1,10 +1,27 @@
-
 const buttonsReserva = document.querySelectorAll('.btn-reserva');
+
+document.addEventListener('DOMContentLoaded', function(){
+    if(window.location.href.indexOf('reserves.php') > -1){
+        let buttonsReserves = document.querySelectorAll('.btn-warning');
+        buttonsReserves.forEach(btn => {
+            btn.addEventListener('click', function(){
+                const id_act_R = btn.getAttribute('id');
+                tipo = btn.previousElementSibling.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
+                const data = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
+                const hora = btn.previousElementSibling.firstElementChild.nextElementSibling.innerText.slice(0, -1) + ":00";
+                anularReserva(tipo, data, hora, id_act_R, btn);
+                setTimeout(function(){
+                    document.querySelector('.btn-reserva').closest('.col-12').remove();
+                }, 1000);
+            });
+        });
+    }
+});
 
 buttonsReserva.forEach(btn => {
     btn.addEventListener('click', function(){
         const id_act = btn.getAttribute('id');
-        const tipo = btn.parentElement.parentElement.parentElement.parentElement.previousElementSibling.innerText.toString().toLowerCase().replace('activitats ','').replace('l·l', 'l');
+        let tipo = btn.parentElement.parentElement.parentElement.parentElement.previousElementSibling.innerText.toString().toLowerCase().replace('activitats ','').replace('l·l', 'l');
         const data = btn.previousElementSibling.previousElementSibling.firstElementChild.nextElementSibling.innerText;
         const hora = btn.previousElementSibling.firstElementChild.nextElementSibling.innerText.slice(0, -1) + ":00";
 
@@ -144,6 +161,7 @@ function anularBotons() {
     });
         
 }
+
 
 
 

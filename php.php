@@ -89,9 +89,9 @@
     }
 
     function obtenirReservesLliuresPendents() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT DISTINCT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color, a.id, b.data
                 FROM activitat a, es_fa b, sala c, monitor d, reserva_lliure e, `client` f
-                WHERE a.id = e.id AND
+                WHERE a.id = e.id_act AND
                 a.id = b.id AND
                 b.num = c.num AND
                 d.num = c.num AND
@@ -106,9 +106,9 @@
     }
 
     function obtenirReservesColectivesPendents() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT DISTINCT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color, a.id, b.data
                 FROM activitat a, es_fa b, sala c, monitor d, reserva_colectiva e, `client` f
-                WHERE a.id = e.id AND
+                WHERE a.id = e.id_act AND
                 a.id = b.id AND
                 b.num = c.num AND
                 d.num = c.num AND
@@ -123,9 +123,9 @@
     }
 
     function obtenirReservesLliuresFinalitzades() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color, a.id, b.data
                 FROM activitat a, es_fa b, sala c, monitor d, reserva_lliure e, `client` f
-                WHERE a.id = e.id AND
+                WHERE a.id = e.id_act AND
                 a.id = b.id AND
                 b.num = c.num AND
                 d.num = c.num AND
@@ -140,9 +140,9 @@
     }
 
     function obtenirReservesColectivesFinalitzades() {
-        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color
+        $sql = "SELECT a.nom AS activitat, TIME_FORMAT(b.hora, '%H:%i') AS hora, c.num, c.aforament_max, d.nom, d.cognom, a.color, a.id, b.data
                 FROM activitat a, es_fa b, sala c, monitor d, reserva_colectiva e, `client` f
-                WHERE a.id = e.id AND
+                WHERE a.id = e.id_act AND
                 a.id = b.id AND
                 b.num = c.num AND
                 d.num = c.num AND

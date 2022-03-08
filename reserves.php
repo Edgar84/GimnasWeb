@@ -81,12 +81,14 @@
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
                             <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Lliure</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span class="lliures">Lliure</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
+                            <button class="btn btn-warning" type="button" id="<?php echo $row['id']?>">
+                                Anular
                             </button>
                         </div>
                       </div>
@@ -102,17 +104,20 @@
                         <div class="card-body">
                             <h2 class="h4"><?php echo $row['activitat']?></h2>
                             <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span><?php echo $row['hora'] . 'h'?></span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span>Col·lectiva</span></p>
-                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Monitor:</span><span><?php echo $row['nom'] . ' ' . $row['cognom']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Aforamemt:</span><span><?php echo $row['aforament_max']?></span></p>
                             <p class="card-text"><span class="text-muted text-size-sm">Sala:</span><span><?php echo $row['num']?></span></p>
-                            <button class="btn btn-primary" type="button">
-                                Reservar
+                            <p class="card-text"><span class="text-muted text-size-sm">Tipus:</span><span class="colectives">Col·lectiva</span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Dia:</span><span class="dia_act"><?php echo $row['data']?></span></p>
+                            <p class="card-text"><span class="text-muted text-size-sm">Hora d'inici:</span><span class="hora_act"><?php echo $row['hora'] . 'h'?></span></p>
+                            <button class="btn btn-warning" type="button" id="<?php echo $row['id']?>">
+                                Anular
                             </button>
                         </div>
                       </div>
                 </div>
                 <?php }?>
+            </div>
             <div class="row mb-5">
                 <div class="col-12">
                     <div class="home-title">
