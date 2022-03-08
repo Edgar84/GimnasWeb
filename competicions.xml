@@ -4,25 +4,25 @@
 <competicions>
     <competicio>
         <name>Bicicleta</name>
-        <date>15/03/2022</date>
+        <date>2022-03-15</date>
         <image src="src/img/xml-bici.jpg"></image>
         <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam id massa a risus vestibulum rutrum.</description>
     </competicio>
     <competicio>
         <name>Natació</name>
-        <date>22/04/2022</date>
+        <date>2022-04-22</date>
         <image src="src/img/xml-natacio.jpg"></image>
         <description>Vivamus vitae varius, vitae dignissim lorem. Aliquam in dolor sed pretium lacinia sit amet non eros.</description>
     </competicio>
     <competicio>
         <name>Correr</name>
-        <date>18/03/2022</date>
+        <date>2022-03-18</date>
         <image src="src/img/xml-correr.jpg"></image>
         <description>Maecenas accumsan a eros non feugiat. Nam diam, pellentesque rutrum vulputate at, suscipit in dui.</description>
     </competicio>
     <competicio>
         <name>Triatló</name>
-        <date>11/05/2022</date>
+        <date>2022-05-11</date>
         <image src="src/img/xml-triatlo.jpg"></image>
         <description>Nunc quam, varius non cursus vitae, ultrices id nibh. In nunc odio, mollis vel odio a, rutrum quam.</description>
     </competicio>
